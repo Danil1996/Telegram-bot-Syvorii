@@ -1,4 +1,6 @@
-      # TelegaByDanilBot
+# TelegaByDanilBot
+
+---
 
 ### What is it?
 
