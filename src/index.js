@@ -1,9 +1,10 @@
 'use strict'
 
-const TelegramBot = require('node-telegram-bot-api'); // connect telergam-bot-api
+// connect telergam-bot-api
+const TelegramBot = require('node-telegram-bot-api'); 
 
-const token = '1467634524:AAHAgwZTKIziO8rSEfaOkX9FfPKj6Gwucuc'; // This is token given by telegram bot @BotFather
-
+// This is token given by telegram bot @BotFather
+const token = '1467634524:AAHAgwZTKIziO8rSEfaOkX9FfPKj6Gwucuc'; 
 
 const bot = new TelegramBot(token, {polling: true});
 
@@ -27,7 +28,7 @@ const keyboard = [
 bot.on('message', (msg) => {
   const chatId = msg.chat.id; 
 
-  //send a message
+  //send message with keyboard and resend message when using keyboard
   bot.sendMessage(chatId, 'Привет! Чаво хочешь?', {
         reply_markup: {
             inline_keyboard: keyboard

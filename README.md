@@ -1,40 +1,36 @@
-      *TelegaByDanilBot*
+      # TelegaByDanilBot
 
-What is it?
-
----
-
-TelegaByDanilBot this is the api for telegram bot.
-
-The Latest Version
+### What is it?
 
 ---
 
-This is first version of project.
+This is the open source of my trial api for telegram bot. I only study so that don't judge me strictly. I wait for your comments in issues.
 
-Documentation
+### The Latest Version
 
 ---
 
+This is first version of project. There will be more later.
+
+### Auxiliary data and sites
+
+---
+
+Node.js : 'https://nodejs.org/ru/'
 Telegram-bot-api documentation : 'https://core.telegram.org/bots/api'.
 Node.js : 'https://nodejs.org/ru/download/'.
 
-Installation
+### Installation
 
 ---
 
-Using this link 'https://github.com/Danil1996/Telegram-bot-Syvorii.git'
-you download all the files and place them in a folder. Then in the
-terminal you activate the index.js file through the node (node index.js).
-Сongratulations you can find @telegaByDanilBot in telegram and use.
-
-Software Notice
-
----
-
-This api uses the @ botFather telegram bot for registration, as well as
-the library for creating telegram bots on Node.js.
-
-Contacts
-
----
+To activate this api, Node.js must be installed on your PC, you can
+install it via the terminal using HomeBrew ( **brew install node** )
+or you can find more information on the website ('https://nodejs.org/ru/').
+Further Using this link, download a clone of this repository through
+the terminal ( **git clone https://github.com/Danil1996/Telegram-bot-Syvorii.git** )
+into an empty folder. Install the library (Telegram bot api), for
+this in the terminal, enter ( **npm install --save --save-exact node-telegram-bot-api** ).
+The final touch, in the terminal you activate the index.js file via
+node .js ( **node index.js** ). Congratulations, you can find
+(@telegaByDanilBot) in telegram and use.
