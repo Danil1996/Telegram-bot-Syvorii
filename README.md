@@ -18,9 +18,9 @@ This is first version of project. There will be more later.
 
 ---
 
-*ul - Node.js : 'https://nodejs.org/ru/'
-*ul - Telegram-bot-api documentation : 'https://core.telegram.org/bots/api'.
-\*ul - Node.js : 'https://nodejs.org/ru/download/'.
+- Node.js : 'https://nodejs.org/ru/'
+- Telegram-bot-api documentation : 'https://core.telegram.org/bots/api'.
+- Node.js : 'https://nodejs.org/ru/download/'.
 
 ### Installation
 
