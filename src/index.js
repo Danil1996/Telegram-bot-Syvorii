@@ -43,11 +43,11 @@ bot.on('callback_query', (query) => {
     let img = '';
 
     if (query.data === 'hello') { 
-        img = '../img/IMAGE 2020-11-02 10:25:30.jpg';
+        img = '../static_data/image/IMAGE 2020-11-02 10:25:30.jpg';
     }
 
     if (query.data === 'goodBy') { 
-        img = '../img/IMAGE 2020-11-02 10:36:42.jpg';
+        img = '../static_data/image/IMAGE 2020-11-02 10:36:42.jpg';
     }
 
     if (img) {
