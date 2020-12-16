@@ -33,13 +33,12 @@ bot.on('message', (msg) => {
 function gettingStatistics(method,requestUrl) {
         let xhr = new XMLHttpRequest();
         xhr.open(method, requestUrl, true);
-        xhr.onload = function() {
-            console.log(xhr.responseText);
-        xhr.responseType = 'json';
-        console.log(xhr.response);
+        xhr.onload = () => {
+            console.log(xhr.responseText); 
+        }
         xhr.send();
         }
-    }
+
 
 
 // keyboard press event handler
