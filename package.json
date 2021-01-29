@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/Danil1996/Telegram-bot-Syvorii#readme",
   "dependencies": {
-    "node-html-parser": "^2.0.0",
-    "node-telegram-bot-api": "0.50.0"
+    "node-html-parser": "^2.0.2",
+    "node-telegram-bot-api": "0.50.0",
+    "superagent": "^6.1.0"
   }
 }

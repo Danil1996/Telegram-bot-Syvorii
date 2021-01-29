@@ -1,69 +1,81 @@
-'use strict'
+"use strict";
 
-const bot = require('../src/app.js');
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-const HTMLParser = require('node-html-parser');
+//node modulse
+const bot = require("../src/app.js");
+const superagent = require("superagent");
+const HTMLParser = require("node-html-parser");
 
-// const requestUrl = 'https://jsonplaceholder.typicode.com/posts';
+// constant variables
+const UrlPravoNaZemlu = "https://pravonazemliu.org/api/1.0.0/statistics";
 
-//add config for keyboard  
+//add config for keyboard
 const keyboard = [
-    [
-      {
-        text: 'Статистика', 
-        callback_data: 'statistic'
-      }
-    ],
-  ];
+  [
+    {
+      text: "Статистика",
+      callback_data: "statistic",
+    },
+  ],
+];
 
-  // event handler for sending us any message
-bot.on('message', (msg) => {
-  const chatId = msg.chat.id; 
+// event handler for sending us any message
+bot.on("message", (msg) => {
+  const chatId = msg.chat.id;
 
   //send message with keyboard and resend message when using keyboard
-  bot.sendMessage(chatId, 'Здравствуйте! Ваши пожелания?', {
-        reply_markup: {
-            inline_keyboard: keyboard
-            
-        }
-    });
+  bot.sendMessage(chatId, "Здравствуйте! Ваши пожелания?", {
+    reply_markup: {
+      inline_keyboard: keyboard,
+    },
+  });
 });
 
+// promise with async/await (fn http get requst)
+async function gettingStatistics(url) {
+  const req = await superagent.get(url);
+  return req.text;
+}
 
-function gettingStatistics(method,requestUrl) {
-        let xhr = new XMLHttpRequest();
-        xhr.open(method, requestUrl, true);
-        xhr.onload = () => {
-            console.log(xhr.responseText); 
-        }
-        xhr.send();
-        }
+// answer function
+function answer(statisticBody, chatId) {
+  if (statisticBody) {
+    bot.sendMessage(chatId, `${statisticBody}`, {
+      reply_markup: {
+        inline_keyboard: keyboard,
+      },
+    });
+  } else {
+    bot.sendMessage(chatId, "Не получаеться, давай попробуем ещё раз?", {
+      reply_markup: {
+        inline_keyboard: keyboard,
+      },
+    });
+  }
+}
 
-
+// function for parsing the html page returned in after request
+function parseDom(dom) {
+  let root = HTMLParser.parse(dom);
+  console.log("3", root.innerHTML);
+  return root.innerText;
+}
 
 // keyboard press event handler
-bot.on('callback_query', (query) => {
-    const chatId = query.message.chat.id;
+bot.on("callback_query", (query) => {
+  const chatIdValue = query.message.chat.id;
 
-    let statistic;
+  if (query.data === "statistic") {
+    gettingStatistics(UrlPravoNaZemlu).then((result) => {
+      result = parseInnerText(parseDom(result));
+      answer(result, chatIdValue);
+    });
+  }
+});
 
-    if (query.data === 'statistic') { 
-        statistic = gettingStatistics('GET','https://pravonazemliu.org/api/1.0.0/statistics');
-        console.log(statistic);
-    }
+//error event
+bot.on("polling_error", (err) => console.log(err));
 
-    if (statistic) {
-        bot.sendMessage(chatId, statistic, {
-            reply_markup: {
-                inline_keyboard: keyboard
-            }
-        });
-    } else {
-        bot.sendMessage(chatId, 'Не получаеться, давай попробуем ещё раз?', { 
-            reply_markup: {
-                inline_keyboard: keyboard
-            }
-        });
-    }
-  });
-  bot.on("polling_error", (err) => console.log(err));
+function parseInnerText(text) {
+  let spliceText = text.lenght;
+  console.log(spliceText);
+}
