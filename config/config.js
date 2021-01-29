@@ -74,8 +74,3 @@ bot.on("callback_query", (query) => {
 
 //error event
 bot.on("polling_error", (err) => console.log(err));
-
-function parseInnerText(text) {
-  let spliceText = text.lenght;
-  console.log(spliceText);
-}
