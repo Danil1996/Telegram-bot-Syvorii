@@ -60,13 +60,21 @@ function parseDom(dom) {
   return root.innerText;
 }
 
+function responseHandler(response) {
+  let firstIndex = response.indexOf("Ф");
+  let responseLength = response.length;
+  let answerLenght = responseLength - firstIndex;
+  let answer = response.substr(firstIndex, answerLenght);
+  console.log(answer);
+}
+
 // keyboard press event handler
 bot.on("callback_query", (query) => {
   const chatIdValue = query.message.chat.id;
 
   if (query.data === "statistic") {
     gettingStatistics(UrlPravoNaZemlu).then((result) => {
-      result = parseInnerText(parseDom(result));
+      result = responseHandler(parseDom(result));
       answer(result, chatIdValue);
     });
   }
