@@ -1,0 +1,14 @@
+[Unit]
+Description=telegram_bot_pravoNaZemlu - Telegram bot
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/node app.js
+ExecReload=/usr/bin/node app.js
+WorkingDirectory=/opt/telegram_bot_pravoNaZemlu/src/
+KillMode=process
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

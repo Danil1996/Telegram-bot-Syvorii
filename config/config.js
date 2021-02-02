@@ -65,7 +65,7 @@ function responseHandler(response) {
   let responseLength = response.length;
   let answerLenght = responseLength - firstIndex;
   let answer = response.substr(firstIndex, answerLenght);
-  console.log(answer);
+  return answer;
 }
 
 // keyboard press event handler
